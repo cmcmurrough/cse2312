@@ -12,13 +12,13 @@
     .func main
    
 main:
-    MOV R1, #0              @ initialze index variable
+    MOV R5, #0              @ initialze index variable
 loop:
-    CMP R1, #100            @ check to see if we are done iterating
+    CMP R5, #100            @ check to see if we are done iterating
     BEQ _exit               @ exit if done
     MOV R2, #0              @ move a[i] to R2 for printing
     BL  _printf             @ branch to print procedure with return
-    ADD R1, R1, #1          @ increment index
+    ADD R5, R5, #1          @ increment index
     B   loop                @ branch to next loop iteration
 	
 _exit:  
