@@ -15,7 +15,7 @@ main:
     MOV R1, #0              @ initialze index variable
 loop:
 	CMP R1, #100            @ check to see if we are done iterating
-	BEQ _exit:              @ exit if done
+	BEQ _exit               @ exit if done
 	MOV R2, #0              @ move a[i] to R2 for printing
     BL  _printf             @ branch to print procedure with return
     B   loop                @ branch to next loop iteration
@@ -39,9 +39,9 @@ _printf:
    
 
 .data
-balign 4
+.balign 4
 a:              .skip       400
-a_address       .word       a
+a_address:      .word       a
 number:         .word       0
 printf_str:     .asciz      "%a[$d] = %d\n"
 exit_str:       .ascii      "Terminating program.\n"
