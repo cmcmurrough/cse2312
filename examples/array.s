@@ -16,7 +16,8 @@ main:
 loop:
     CMP R5, #100            @ check to see if we are done iterating
     BEQ _exit               @ exit if done
-    MOV R2, #0              @ move a[i] to R2 for printing
+	MOV R1, R5              @ move index to R1 for printing
+    MOV R2, #0              @ move a[index] to R2 for printing
     BL  _printf             @ branch to print procedure with return
     ADD R5, R5, #1          @ increment index
     B   loop                @ branch to next loop iteration
@@ -33,8 +34,6 @@ _exit:
 _printf:
     PUSH {LR}               @ store the return address
     LDR R0, =printf_str     @ R0 contains formatted string address
-    @MOV R1, R1             @ R1 contains printf argument 1 (redundant line)
-    @MOV R2, R2             @ R2 contains printf argument 2 (redundant line)
     BL printf               @ call printf
     POP {PC}                @ restore the stack pointer and return
    
