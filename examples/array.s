@@ -17,7 +17,11 @@ loop:
     CMP R5, #100            @ check to see if we are done iterating
     BEQ _exit               @ exit if done
 	MOV R1, R5              @ move index to R1 for printing
-    MOV R2, #0              @ move a[index] to R2 for printing
+	MOV R0, a_address       @ move base address of a to R0
+	MUL R6, R5, #4          @ multiply index*4 to get array offset
+	MOV ADD R0, R0, R6      @ R0 now has the element address
+	LDR R2, R0              @ access the array
+    @MOV R2, #0              @ move a[index] to R2 for printing
     BL  _printf             @ branch to print procedure with return
     ADD R5, R5, #1          @ increment index
     B   loop                @ branch to next loop iteration
@@ -37,7 +41,6 @@ _printf:
     BL printf               @ call printf
     POP {PC}                @ restore the stack pointer and return
    
-
 .data
 .balign 4
 a:              .skip       400
