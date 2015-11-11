@@ -18,6 +18,7 @@ loop:
 	BEQ _exit               @ exit if done
 	MOV R2, #0              @ move a[i] to R2 for printing
     BL  _printf             @ branch to print procedure with return
+	ADD R0, R0, #1          @ increment index
     B   loop                @ branch to next loop iteration
    
 _exit:  
