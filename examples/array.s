@@ -43,5 +43,5 @@ _printf:
 a:              .skip       400
 a_address:      .word       a
 number:         .word       0
-printf_str:     .asciz      "%a[$d] = %d\n"
+printf_str:     .asciz      "a[%d] = %d\n"
 exit_str:       .ascii      "Terminating program.\n"
