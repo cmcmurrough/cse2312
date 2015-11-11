@@ -14,13 +14,13 @@
 main:
     MOV R1, #0              @ initialze index variable
 loop:
-	CMP R1, #100            @ check to see if we are done iterating
-	BEQ _exit               @ exit if done
-	MOV R2, #0              @ move a[i] to R2 for printing
+    CMP R1, #100            @ check to see if we are done iterating
+    BEQ _exit               @ exit if done
+    MOV R2, #0              @ move a[i] to R2 for printing
     BL  _printf             @ branch to print procedure with return
-	ADD R0, R0, #1          @ increment index
+    ADD R1, R1, #1          @ increment index
     B   loop                @ branch to next loop iteration
-   
+	
 _exit:  
     MOV R7, #4              @ write syscall, 4
     MOV R0, #1              @ output stream to monitor, 1
