@@ -12,20 +12,35 @@
 .func main
    
 main:
-    MOV R5, #0              @ initialze index variable
-loop:
-    CMP R5, #100            @ check to see if we are done iterating
-    BEQ _exit               @ exit if done
-    MOV R1, R5              @ move index to R1 for printing
-    LDR R0, =a              @ get address of a
-    LDR R0, [R0]            @ load base address of a to R0
-    LSL R6, R5, #2          @ multiply index*4 to get array offset
-    ADD R0, R0, R6          @ R0 now has the element address
+    MOV R0, #0              @ initialze index variable
+writeloop:
+    CMP R0, #100            @ check to see if we are done iterating
+    BEQ writedone           @ exit loop if done
+    LDR R1, =a              @ get address of a
+    LSL R1, R1, #2          @ multiply index*4 to get array offset
+    ADD R0, R0, R1          @ R0 now has the element address
+    STR R1, [R0]            @ store the element offset (i*4) to a[i]
+    BL  _printf             @ branch to print procedure with return
+    ADD R1, R1, #1          @ increment index
+    B   writeloop           @ branch to next loop iteration
+writedone:
+    B _exit                 @ exit if done
+
+    MOV R0, #0              @ initialze index variable
+readloop:
+    CMP R0, #100            @ check to see if we are done iterating
+    BEQ readdone            @ exit loop if done
+    LDR R1, =a              @ get address of a
+    @LDR R0, [R0]           @ load base address of a to R0
+    LSL R1, R1, #2          @ multiply index*4 to get array offset
+    ADD R0, R0, R1          @ R0 now has the element address
     LDR R2, [R0]            @ access the array storing value in R2
     BL  _printf             @ branch to print procedure with return
-    ADD R5, R5, #1          @ increment index
-    B   loop                @ branch to next loop iteration
-	
+    ADD R1, R1, #1          @ increment index
+    B   readloop            @ branch to next loop iteration
+readdone:
+    B _exit                 @ exit if done
+    
 _exit:  
     MOV R7, #4              @ write syscall, 4
     MOV R0, #1              @ output stream to monitor, 1
