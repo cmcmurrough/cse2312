@@ -17,11 +17,11 @@ loop:
     CMP R5, #100            @ check to see if we are done iterating
     BEQ _exit               @ exit if done
     MOV R1, R5              @ move index to R1 for printing
-    LDR R0, =a           @get address of a
-    LDR R0, [R0]       @ load base address of a to R0
-    LSL R6, R5, #2           @ multiply index*4 to get array offset
-    ADD R0, R0, R6      @ R0 now has the element address
-    LDR R2, [R0]              @ access the array storing value in R2
+    LDR R0, =a              @get address of a
+    LDR R0, [R0]            @ load base address of a to R0
+    LSL R6, R5, #2          @ multiply index*4 to get array offset
+    ADD R0, R0, R6          @ R0 now has the element address
+    LDR R2, [R0]            @ access the array storing value in R2
     BL  _printf             @ branch to print procedure with return
     ADD R5, R5, #1          @ increment index
     B   loop                @ branch to next loop iteration
