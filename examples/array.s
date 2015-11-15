@@ -17,26 +17,30 @@ writeloop:
     CMP R0, #100            @ check to see if we are done iterating
     BEQ writedone           @ exit loop if done
     LDR R1, =a              @ get address of a
-    LSL R1, R1, #2          @ multiply index*4 to get array offset
-    ADD R0, R0, R1          @ R0 now has the element address
-    STR R1, [R0]            @ store the element offset (i*4) to a[i]
-    BL  _printf             @ branch to print procedure with return
-    ADD R1, R1, #1          @ increment index
+    LSL R2, R0, #2          @ multiply index*4 to get array offset
+    ADD R2, R1, R2          @ R2 now has the element address
+    STR R2, [R2]            @ write the address of a[i] to a[i]
+    ADD R0, R0, #1          @ increment index
     B   writeloop           @ branch to next loop iteration
 writedone:
-    B _exit                 @ exit if done
-
     MOV R0, #0              @ initialze index variable
 readloop:
     CMP R0, #100            @ check to see if we are done iterating
     BEQ readdone            @ exit loop if done
     LDR R1, =a              @ get address of a
-    @LDR R0, [R0]           @ load base address of a to R0
-    LSL R1, R1, #2          @ multiply index*4 to get array offset
-    ADD R0, R0, R1          @ R0 now has the element address
-    LDR R2, [R0]            @ access the array storing value in R2
+    LSL R2, R0, #2          @ multiply index*4 to get array offset
+    ADD R2, R1, R2          @ R2 now has the element address
+    LDR R1, [R2]            @ read the array at address 
+    PUSH {R0}               @ backup register before printf
+    PUSH {R1}               @ backup register before printf
+    PUSH {R2}               @ backup register before printf
+    MOV R2, R1              @ move array value to R2 for printf
+    MOV R1, R0              @ move array index to R1 for printf
     BL  _printf             @ branch to print procedure with return
-    ADD R1, R1, #1          @ increment index
+    POP {R2}                @ restore register
+    POP {R1}                @ restore register
+    POP {R0}                @ restore register
+    ADD R0, R0, #1          @ increment index
     B   readloop            @ branch to next loop iteration
 readdone:
     B _exit                 @ exit if done
@@ -59,8 +63,7 @@ _printf:
 .data
 
 .balign 4
+b: .skip 100
 a:              .skip       400
-a_address:      .word       a
-number:         .word       0
 printf_str:     .asciz      "a[%d] = %d\n"
 exit_str:       .ascii      "Terminating program.\n"
