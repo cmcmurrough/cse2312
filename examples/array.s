@@ -63,7 +63,6 @@ _printf:
 .data
 
 .balign 4
-b: .skip 100
 a:              .skip       400
 printf_str:     .asciz      "a[%d] = %d\n"
 exit_str:       .ascii      "Terminating program.\n"
