@@ -56,6 +56,6 @@ _scanf:
 
 .data
 format_str:     .asciz      "%f"
-prompt_str:     .asciz      "Enter a number to square: "
-printf_str:     .asciz      "%f^2 = %f"
+prompt_str:     .asciz      "Enter a number to square: \n"
+printf_str:     .asciz      "%f^2 = %f \n"
 exit_str:       .ascii      "Terminating program.\n"
