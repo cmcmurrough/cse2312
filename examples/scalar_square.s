@@ -14,8 +14,11 @@
 main:
     BL  _prompt             @ branch to prompt procedure with return
     BL  _scanf              @ branch to scanf procedure with return
-    
-    MOV R1, R0              @ move return value R0 to argument register R1
+
+    VMOV S2, R1             @ move single precision value in R1 to S2
+    VMOV S3, R1             @ move single precision value in R1 to S3
+    VMUL.F32 S1, S2, S3     @ compute S1 = S2 * S3
+    VMOV R1, S1             @ move single prevision value in S1 to R1
     
     BL  _printf             @ branch to print procedure with return
     B   _exit               @ branch to exit procedure with no return
