@@ -1,8 +1,9 @@
 /******************************************************************************
-* @FILE float.s
-* @BRIEF simple floating point example
+* @FILE scalar_square.s
+* @BRIEF simple example of squaring a scalar number with the FPU
 *
-* Simple example of using the ARM FPU to handle floating point operations
+* Simple example of using the ARM FPU to compute the square of a floating point
+* scalar number
 *
 * @AUTHOR Christopher D. McMurrough
 ******************************************************************************/
@@ -13,7 +14,9 @@
 main:
     BL  _prompt             @ branch to prompt procedure with return
     BL  _scanf              @ branch to scanf procedure with return
+    
     MOV R1, R0              @ move return value R0 to argument register R1
+    
     BL  _printf             @ branch to print procedure with return
     B   _exit               @ branch to exit procedure with no return
    
@@ -52,7 +55,7 @@ _scanf:
     MOV PC, R4              @ return
 
 .data
-format_str:     .asciz      "%d"
-prompt_str:     .asciz      "Type a number and press enter: "
-printf_str:     .asciz      "The number entered was: %d\n"
+format_str:     .asciz      "%f"
+prompt_str:     .asciz      "Enter a number to square: "
+printf_str:     .asciz      "%f^2 = %f"
 exit_str:       .ascii      "Terminating program.\n"
