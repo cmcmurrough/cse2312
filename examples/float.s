@@ -60,5 +60,5 @@ _printf_result:
 arg_str:      .asciz      "Argument: %f \n"
 result_str:     .asciz      "Multiplication result = %f \n"
 exit_str:       .ascii      "Terminating program.\n"
-val1:           .float      0.1496843
-val2:           .float      10000.057
+val1:           .float      25.5
+val2:           .float      0.1
