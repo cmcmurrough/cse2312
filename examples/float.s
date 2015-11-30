@@ -12,20 +12,27 @@
     .func main
    
 main:
-    BL  _prompt             @ branch to prompt procedure with return
 
     LDR R0, =val1           @ load variable address
     VLDR S0, [R0]           @ load the value into the VFP register
     
+    VCVT.F64.F32 D4, S0     @ covert the value to double precision for printing
+    VMOV R1, R2, D4         @ split the double VFP register into two ARM registers
+    BL _printf_arg          @ print the first argument
+    
     LDR R0, =val2           @ load variable address
     VLDR S1, [R0]           @ load the value into the VFP register
     
+    VCVT.F64.F32 D4, S1     @ covert the value to double precision for printing
+    VMOV R1, R2, D4         @ split the double VFP register into two ARM registers
+    BL _printf_arg          @ print the second argument
+    
     VMUL.F32 S2, S0, S1     @ compute S2 = S0 * S1
-   
+    
     VCVT.F64.F32 D4, S2     @ covert the result to double precision for printing
     VMOV R1, R2, D4         @ split the double VFP register into two ARM registers
-
-    BL  _printf             @ branch to print procedure with return
+    BL  _printf_result      @ print the result
+    
     B   _exit               @ branch to exit procedure with no return
    
 _exit:  
