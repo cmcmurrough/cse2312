@@ -57,8 +57,8 @@ _printf_result:
     POP {PC}                @ pop LR from stack and return
 
 .data
-arg_str:      .asciz      "Argument: %f \n"
+arg_str:        .asciz      "Argument: %f \n"
 result_str:     .asciz      "Multiplication result = %f \n"
 exit_str:       .ascii      "Terminating program.\n"
-val1:           .float      25.5
-val2:           .float      0.1
+val1:           .float      25
+val2:           .float      4
