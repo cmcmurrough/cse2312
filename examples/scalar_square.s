@@ -15,8 +15,8 @@ main:
     BL  _prompt             @ branch to prompt procedure with return
     BL  _scanf              @ branch to scanf procedure with return
 
-    VMOV S2, R1             @ move single precision value in R1 to S2
-    VMOV S3, R1             @ move single precision value in R1 to S3
+    VMOV S2, R0             @ move single precision value in R0 to S2
+    VMOV S3, R0             @ move single precision value in R0 to S3
     VMUL.F32 S1, S2, S3     @ compute S1 = S2 * S3
     VMOV R1, S2             @ move single prevision value in S2 to R1
     VMOV R2, S1             @ move single prevision value in S1 to R2
@@ -36,7 +36,7 @@ _exit:
 _prompt:
     MOV R7, #4              @ write syscall, 4
     MOV R0, #1              @ output stream to monitor, 1
-    MOV R2, #31             @ print string length
+    MOV R2, #27             @ print string length
     LDR R1, =prompt_str     @ string at label prompt_str:
     SWI 0                   @ execute syscall
     MOV PC, LR              @ return
@@ -60,6 +60,6 @@ _scanf:
 
 .data
 format_str:     .asciz      "%f"
-prompt_str:     .asciz      "Enter a number to square: \n"
+prompt_str:     .asciz      "Enter a number to square: "
 printf_str:     .asciz      "%f^2 = %f \n"
 exit_str:       .ascii      "Terminating program.\n"
