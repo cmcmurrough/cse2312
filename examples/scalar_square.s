@@ -13,25 +13,19 @@
    
 main:
     BL  _prompt             @ branch to prompt procedure with return
-    @BL  _scanf_float              @ branch to scanf procedure with return
+    @BL  _scanf_float        @ branch to scanf procedure with return
 
-    LDR R0, =double
-    @LDR R1, [R0]
-    @ADD R0, R0, #4
-    @LDR R2, [R0]
-    @VMOV D0, R1, R2 
-    @VCVT.F32.F64 S2, D0
+    
     
     @VMOV S2, R0             @ move single precision value in R0 to S2
     @VMOV S3, R0             @ move single precision value in R0 to S3
     
-    VLDR S2, [R0]
-    VMUL.F32 S1, S2, S2     @ compute S1 = S2 * S2
+    LDR R0, =double         @ load variable address
+    VLDR S0, [R0]           @ load the value into the VFP register
+    VMUL.F32 S1, S0, S0     @ compute S1 = S0 * S0
    
-    VCVT.F64.F32 D4, S2
-    @VMOV R1, S2             @ move single prevision value in S2 to R1
-    @VMOV R2, S1             @ move single prevision value in S1 to R2
-    VMOV R1, R2, D4    
+    VCVT.F64.F32 D4, S1     @ covert the result to double precision for printing
+    VMOV R1, R2, D4         @ split the double VFP register into two ARM registers
 
     BL  _printf             @ branch to print procedure with return
     B   _exit               @ branch to exit procedure with no return
@@ -70,7 +64,7 @@ _scanf_float:
 .data
 format_str:     .asciz      "%f"
 prompt_str:     .asciz      "Enter a number to square: "
-printf_str:     .asciz      "%f^2 = %f \n"
+printf_str:     .asciz      "Result = %f \n"
 exit_str:       .ascii      "Terminating program.\n"
 
 double: .float 3.14159
