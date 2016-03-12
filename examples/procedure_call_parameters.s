@@ -1,11 +1,11 @@
 /******************************************************************************
-* @FILE procedure_call_parameters.s
-* @BRIEF procedure call and return example with passed parameters
+* @file procedure_call_parameters.s
+* @brief procedure call and return example with passed parameters
 *
 * Simple example of executing a procedure call and returning upon completion.
 * The procedure call expects 3 input parameters, and returns a value.
 *
-* @AUTHOR Christopher D. McMurrough
+* @author Christopher D. McMurrough
 ******************************************************************************/
  
         .global main

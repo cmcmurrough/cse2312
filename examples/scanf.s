@@ -1,10 +1,10 @@
 /******************************************************************************
-* @FILE scanf.s
-* @BRIEF simple scanf example
+* @file scanf.s
+* @brief simple scanf example
 *
 * Simple example of invoking scanf to retrieve a number from keyboard input
 *
-* @AUTHOR Christopher D. McMurrough
+* @author Christopher D. McMurrough
 ******************************************************************************/
  
     .global main

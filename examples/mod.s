@@ -1,10 +1,10 @@
 /******************************************************************************
-* @FILE mod.s
-* @BRIEF simple mod operations example
+* @file mod.s
+* @brief simple mod operations example
 *
 * Simple example of computing the remainder of integer division
 *
-* @AUTHOR Christopher D. McMurrough
+* @author Christopher D. McMurrough
 ******************************************************************************/
  
     .global main

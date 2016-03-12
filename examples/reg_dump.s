@@ -1,10 +1,10 @@
 /******************************************************************************
-* @FILE mod.s
-* @BRIEF register print example
+* @file mod.s
+* @brief register print example
 *
 * Simple example of printing register values to terminal for debugging
 *
-* @AUTHOR Christopher D. McMurrough
+* @author Christopher D. McMurrough
 ******************************************************************************/
  
     .global main

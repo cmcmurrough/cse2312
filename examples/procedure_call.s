@@ -1,10 +1,10 @@
 /******************************************************************************
-* @FILE procedure_call.s
-* @BRIEF procedure call and return example
+* @file procedure_call.s
+* @brief procedure call and return example
 *
 * Simple example of executing a procedure call and returning upon completion
 *
-* @AUTHOR Christopher D. McMurrough
+* @author Christopher D. McMurrough
 ******************************************************************************/
 
 	.global  _start

@@ -1,6 +1,6 @@
 /******************************************************************************
-* @FILE assembler_hello_world.s
-* @BRIEF Hello world console print example using the GNU assembler
+* @file assembler_hello_world.s
+* @brief Hello world console print example using the GNU assembler
 *
 * Simple example of printing text to console using ARM assembly on Raspbian
 * Example based on "Raspberry Pi Assembly Language Raspbian" by Bruce Smith.
@@ -8,7 +8,7 @@
 * as -o assembler_hello_world.o assembler_hello_world.s
 * ld -o assembler_hello_world assembler_hello_world.s
 *
-* @AUTHOR Christopher D. McMurrough
+* @author Christopher D. McMurrough
 ******************************************************************************/
 
 	.global  _start

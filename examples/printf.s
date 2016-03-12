@@ -1,10 +1,10 @@
 /******************************************************************************
-* @FILE printf.s
-* @BRIEF simple printf example
+* @file printf.s
+* @brief simple printf example
 *
 * Simple example of invoking printf to print a formatted string
 *
-* @AUTHOR Christopher D. McMurrough
+* @author Christopher D. McMurrough
 ******************************************************************************/
  
     .global main

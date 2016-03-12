@@ -1,11 +1,11 @@
 /******************************************************************************
-* @FILE float.s
-* @BRIEF simple example of scalar multiplication using the FPU
+* @file float.s
+* @brief simple example of scalar multiplication using the FPU
 *
 * Simple example of using the ARM FPU to compute the multiplication result of
 * two float values
 *
-* @AUTHOR Christopher D. McMurrough
+* @author Christopher D. McMurrough
 ******************************************************************************/
  
     .global main

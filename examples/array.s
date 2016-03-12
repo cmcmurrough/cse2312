@@ -1,11 +1,11 @@
 /******************************************************************************
-* @FILE array.s
-* @BRIEF simple array declaration and iteration example
+* @file array.s
+* @brief simple array declaration and iteration example
 *
 * Simple example of declaring a fixed-width array and traversing over the
 * elements for printing.
 *
-* @AUTHOR Christopher D. McMurrough
+* @author Christopher D. McMurrough
 ******************************************************************************/
  
 .global main

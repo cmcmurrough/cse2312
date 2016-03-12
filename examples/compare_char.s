@@ -1,11 +1,11 @@
 /******************************************************************************
-* @FILE compare_char.s
-* @BRIEF simple get keyboard character and compare
+* @file compare_char.s
+* @brief simple get keyboard character and compare
 *
 * Simple example of invoking syscall to retrieve a char from keyboard input,
 * and testing to see if it is equal to a given value
 *
-* @AUTHOR Christopher D. McMurrough
+* @author Christopher D. McMurrough
 ******************************************************************************/
  
     .global main

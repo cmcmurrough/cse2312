@@ -1,7 +1,7 @@
 /******************************************************************************
-* @FILE hello_world.s
-* @BRIEF Simple hello world example using printf
-* @AUTHOR Christopher D. McMurrough
+* @file hello_world.s
+* @brief Simple hello world example using printf
+* @author Christopher D. McMurrough
 ******************************************************************************/
  
     .global main
