@@ -7,8 +7,8 @@
 * @author Christopher D. McMurrough
 ******************************************************************************/
  
-    .global main
-    .func main
+.global main
+.func main
    
 main:
     MOV R0, #0          @ set a constant value for printing

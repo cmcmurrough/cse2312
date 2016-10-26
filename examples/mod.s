@@ -7,8 +7,8 @@
 * @author Christopher D. McMurrough
 ******************************************************************************/
  
-    .global main
-    .func main
+.global main
+.func main
    
 main:
     MOV R1, #200        @ set a constant value for mod evaluation

@@ -8,8 +8,8 @@
 * @author Christopher D. McMurrough
 ******************************************************************************/
  
-    .global main
-    .func main
+.global main
+.func main
    
 main:
     BL  _prompt             @ branch to printf procedure with return

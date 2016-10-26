@@ -11,7 +11,7 @@
 * @author Christopher D. McMurrough
 ******************************************************************************/
 
-	.global  _start
+.global  _start
     
 _start:
 	MOV R7, #4          @ write syscall, 4

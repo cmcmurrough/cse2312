@@ -4,8 +4,8 @@
 * @author Christopher D. McMurrough
 ******************************************************************************/
  
-    .global main
-    .func main
+.global main
+.func main
    
 main:
     LDR R0,=print_str   @ store string address in R0

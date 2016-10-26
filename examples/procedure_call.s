@@ -7,7 +7,7 @@
 * @author Christopher D. McMurrough
 ******************************************************************************/
 
-	.global  _start
+.global  _start
     
 _start:
 	BL  _hello          @ branch to hello procedure with return
