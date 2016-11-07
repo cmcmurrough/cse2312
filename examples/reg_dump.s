@@ -1,41 +1,12 @@
 /******************************************************************************
-* @file mod.s
-* @brief register print example
+* @file reg_dump.s
+* @brief register print procedure
 *
-* Simple example of printing register values to terminal for debugging
+* Simple procedure for printing register values to terminal for debugging
 *
 * @author Christopher D. McMurrough
 ******************************************************************************/
- 
-.global main
-.func main
-   
-main:
-    MOV R0, #0          @ set a constant value for printing
-    MOV R1, #10         @ set a constant value for printing
-    MOV R2, #20         @ set a constant value for printing
-    MOV R3, #30         @ set a constant value for printing
-    MOV R4, #40         @ set a constant value for printing
-    MOV R5, #50         @ set a constant value for printing
-    MOV R6, #60         @ set a constant value for printing
-    MOV R7, #70         @ set a constant value for printing
-    MOV R8, #80         @ set a constant value for printing
-    MOV R9, #90         @ set a constant value for printing
-    MOV R10, #100       @ set a constant value for printing
-    MOV R11, #110       @ set a constant value for printing
-    MOV R12, #120       @ set a constant value for printing
-    BL  _reg_dump       @ print register contents
-    B   _exit           @ branch to exit procedure with no return
-   
-_exit:  
-    MOV R7, #4          @ write syscall, 4
-    MOV R0, #1          @ output stream to monitor, 1
-    MOV R2, #21         @ print string length
-    LDR R1,=exit_str    @ string at label exit_str:
-    SWI 0               @ execute syscall
-    MOV R7, #1          @ terminate syscall, 1
-    SWI 0               @ execute syscall
-       
+
 _reg_dump:
     PUSH {LR}           @ backup registers
     PUSH {R0}           @ backup registers
@@ -158,5 +129,3 @@ _reg_dump:
 .data
 debug_str:
 .asciz "R%-2d   0x%08X  %011d \n"
-exit_str:
-.ascii "Terminating program.\n"
