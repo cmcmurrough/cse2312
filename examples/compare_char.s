@@ -49,7 +49,6 @@ _compare:
     CMP R1, #'@'            @ compare against the constant char '@'
     BEQ _correct            @ branch to equal handler
     BNE _incorrect          @ branch to not equal handler
-    MOV PC, R4
  
 _correct:
     MOV R5, LR              @ store LR since printf call overwrites
