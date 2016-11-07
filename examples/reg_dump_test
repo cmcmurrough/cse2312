@@ -1,5 +1,5 @@
 /******************************************************************************
-* @file link_test.s
+* @file reg_dump_test.s
 * @brief register print example
 *
 * Simple example of printing register values to terminal for debugging by
@@ -27,5 +27,5 @@ main:
     MOV R10, #100       @ set a constant value for printing
     MOV R11, #110       @ set a constant value for printing
     MOV R12, #120       @ set a constant value for printing
-    BL  _reg_dump       @ print register contents
+    BL  reg_dump       @ print register contents
     B   _exit           @ branch to exit procedure with no return
