@@ -7,7 +7,7 @@
 * @author Christopher D. McMurrough
 ******************************************************************************/
 
-_reg_dump:
+reg_dump:
     PUSH {LR}           @ backup registers
     PUSH {R0}           @ backup registers
     PUSH {R1}           @ backup registers
