@@ -1,10 +1,5 @@
 /******************************************************************************
-* @file array.s
-* @brief simple array declaration and iteration example
-*
-* Simple example of declaring a fixed-width array and traversing over the
-* elements for printing.
-*
+* @file array_search.s
 * @author Christopher D. McMurrough
 ******************************************************************************/
  
