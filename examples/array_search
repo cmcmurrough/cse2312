@@ -59,6 +59,15 @@ _printf:
     LDR R0, =printf_str     @ R0 contains formatted string address
     BL printf               @ call printf
     POP {PC}                @ restore the stack pointer and return
+    
+_rand:
+    PUSH {LR}               @ backup return address
+    MOV R1, #0              @ pass 0 as argument to time call
+    BL time                 @ get system time
+    MOV R1, R0              @ pass sytem time as argument to srand
+    BL srand                @ seed the random number generator
+    BL rand                 @ get a random number
+    POP {PC}                @ return 
    
 .data
 
