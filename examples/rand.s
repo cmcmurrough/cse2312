@@ -42,7 +42,5 @@ _printf:
     POP {PC}                @ restore the stack pointer and return
    
 .data
-
-.balign 4
 printf_str:     .asciz      "A random number: %d\n"
 exit_str:       .ascii      "Terminating program.\n"
