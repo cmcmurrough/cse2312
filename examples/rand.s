@@ -18,8 +18,13 @@ main:
     B _exit                 @ exit if done
     
 _rand:
-    MOV R0, #0
-    MOV PC, LR
+    PUSH {LR}               @ backup return address
+    MOV R1, #0              @ pass 0 as argument to time call
+    BL time                 @ get system time
+    MOV R1, R0              @ pass sytem time as argument to srand
+    BL srand                @ seed the random number generator
+    BL rand                 @ get a random number
+    POP {PC}                @ return 
     
 _exit:  
     MOV R7, #4              @ write syscall, 4
