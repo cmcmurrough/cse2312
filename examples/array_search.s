@@ -17,7 +17,9 @@ writeloop:
     PUSH {R0}
     BL _reg_dump
     BL _rand                @ get a random number
+    BL _reg_dump
     STR R0, [R2]            @ write the address of a[i] to a[i]
+    BL _reg_dump
     POP {R0}
     ADD R0, R0, #1          @ increment index
     B   writeloop           @ branch to next loop iteration
