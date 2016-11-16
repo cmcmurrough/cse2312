@@ -193,4 +193,6 @@ _reg_dump:
 .balign 4
 a:              .skip       400
 printf_str:     .asciz      "a[%d] = %d\n"
+debug_str:
+.asciz "R%-2d   0x%08X  %011d \n"
 exit_str:       .ascii      "Terminating program.\n"
