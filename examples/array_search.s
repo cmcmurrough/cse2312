@@ -15,7 +15,7 @@ writeloop:
     LSL R2, R0, #2          @ multiply index*4 to get array offset
     ADD R2, R1, R2          @ R2 now has the element address
     PUSH {R0}
-    BL _regdump
+    BL _reg_dump
     BL _rand                @ get a random number
     STR R0, [R2]            @ write the address of a[i] to a[i]
     POP {R0}
