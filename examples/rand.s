@@ -12,19 +12,15 @@
    
 main:
     BL _seedrand            @ seed the random number generator with the current time
-    
     BL _getrand             @ get the random number
     MOV R1, R0              @ move the result into R1 for printf
     BL _printf              @ print the random number
-    
     BL _getrand             @ get the random number
     MOV R1, R0              @ move the result into R1 for printf
     BL _printf              @ print the random number
-    
     BL _getrand             @ get the random number
     MOV R1, R0              @ move the result into R1 for printf
     BL _printf              @ print the random number
-    
     B _exit                 @ exit if done
 
 _seedrand:
