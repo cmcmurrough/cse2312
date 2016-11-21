@@ -11,18 +11,32 @@
 .func main
    
 main:
-    MOV R0, #0              @ initialze index variable
-    BL _rand                @ get the random number
+    BL _seedrand            @ seed the random number generator with the current time
+    
+    BL _getrand                @ get the random number
     MOV R1, R0              @ move the result into R1 for printf
     BL _printf              @ print the random number
-    B _exit                 @ exit if done
     
-_rand:
+    BL _getrand                @ get the random number
+    MOV R1, R0              @ move the result into R1 for printf
+    BL _printf              @ print the random number
+    
+    BL _getrand                @ get the random number
+    MOV R1, R0              @ move the result into R1 for printf
+    BL _printf              @ print the random number
+    
+    B _exit                 @ exit if done
+
+_seedrand:
     PUSH {LR}               @ backup return address
     MOV R1, #0              @ pass 0 as argument to time call
     BL time                 @ get system time
     MOV R1, R0              @ pass sytem time as argument to srand
     BL srand                @ seed the random number generator
+    POP {PC}                @ return 
+    
+_getrand:
+    PUSH {LR}               @ backup return address
     BL rand                 @ get a random number
     POP {PC}                @ return 
     
