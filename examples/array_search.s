@@ -14,14 +14,12 @@ writeloop:
     LDR R1, =a              @ get address of a
     LSL R2, R0, #2          @ multiply index*4 to get array offset
     ADD R2, R1, R2          @ R2 now has the element address
-    PUSH {R0}
-    PUSH {R1}
-    PUSH {R2}
-    #BL _rand                @ get a random number
-    POP {R2}
+    PUSH {R0}               @ backup iterator before procedure call
+    PUSH {R2}               @ backup element address before procedure call
+    BL _getrand             @ get a random number
+    POP {R2}                @ restore element address
     STR R0, [R2]            @ write the address of a[i] to a[i]
-    POP {R1}
-    POP {R0}
+    POP {R0}                @ restore iterator
     ADD R0, R0, #1          @ increment index
     B   writeloop           @ branch to next loop iteration
 writedone:
@@ -62,12 +60,16 @@ _printf:
     BL printf               @ call printf
     POP {PC}                @ restore the stack pointer and return
     
-_rand:
+_seedrand:
     PUSH {LR}               @ backup return address
-    MOV R1, #0              @ pass 0 as argument to time call
+    MOV R0, #0              @ pass 0 as argument to time call
     BL time                 @ get system time
     MOV R1, R0              @ pass sytem time as argument to srand
     BL srand                @ seed the random number generator
+    POP {PC}                @ return 
+    
+_getrand:
+    PUSH {LR}               @ backup return address
     BL rand                 @ get a random number
     POP {PC}                @ return 
    
