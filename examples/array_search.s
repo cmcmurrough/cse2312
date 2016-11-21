@@ -7,6 +7,7 @@
 .func main
    
 main:
+    BL _seedrand            @ seed random number generator with current time
     MOV R0, #0              @ initialze index variable
 writeloop:
     CMP R0, #100            @ check to see if we are done iterating
