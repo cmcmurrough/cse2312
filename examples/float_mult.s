@@ -1,5 +1,5 @@
 /******************************************************************************
-* @file float.s
+* @file float_mult.s
 * @brief simple example of scalar multiplication using the FPU
 *
 * Simple example of using the ARM FPU to compute the multiplication result of
