@@ -12,13 +12,12 @@
 .func main
    
 main:
-
-    MOV R0, #355            @ load the numerator
-	MOV R1, #113            @ load the denominator
-	VMOV S0, R0             @ move the numerator to floating point register
-	VMOV S1, R1             @ move the denominator to floating point register
-	VCVT.F32.U32 S0, S0     @ convert unsigned bit representation to single float
-	VCVT.F32.U32 S1, S1     @ convert unsigned bit representation to single float
+    MOV R0, #22             @ load the numerator
+    MOV R1, #7              @ load the denominator
+    VMOV S0, R0             @ move the numerator to floating point register
+    VMOV S1, R1             @ move the denominator to floating point register
+    VCVT.F32.U32 S0, S0     @ convert unsigned bit representation to single float
+    VCVT.F32.U32 S1, S1     @ convert unsigned bit representation to single float
 	
     VDIV.F32 S2, S0, S1     @ compute S2 = S0 * S1
     
@@ -44,5 +43,5 @@ _printf_result:
     POP {PC}                @ pop LR from stack and return
 
 .data
-result_str:     .asciz      "Pi is approximately 355/113 = %f \n"
+result_str:     .asciz      "Pi is approximately 22/7 = %f \n"
 exit_str:       .ascii      "Terminating program.\n"
