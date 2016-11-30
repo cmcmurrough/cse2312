@@ -15,7 +15,14 @@
 main:
     BL  _prompt             @ branch to prompt procedure with return
     BL  _scanf              @ branch to scanf procedure with return
-    MOV R1, R0              @ move return value R0 to argument register R1
+    
+	VMOV S0, R0             @ move return value R0 to FPU register S0
+	VCVT.F32.U32 S0, S0     @ convert unsigned bit representation to single float
+	
+	VCVT.F64.F32 D1, S0     @ covert the result to double precision for printing
+    VMOV R1, R2, D1         @ split the double VFP register into two ARM registers
+    BL  _printf_result      @ print the result
+	
     BL  _printf             @ branch to print procedure with return
     B   _exit               @ branch to exit procedure with no return
    
@@ -37,11 +44,10 @@ _prompt:
     MOV PC, LR              @ return
        
 _printf:
-    MOV R4, LR              @ store LR since printf call overwrites
+    PUSH {LR}               @ push LR to stack
     LDR R0, =printf_str     @ R0 contains formatted string address
-    MOV R1, R1              @ R1 contains printf argument (redundant line)
     BL printf               @ call printf
-    MOV PC, R4              @ return
+    POP {PC}                @ pop LR from stack and return
     
 _scanf:
     PUSH {LR}               @ store LR since scanf call overwrites
@@ -56,5 +62,5 @@ _scanf:
 .data
 format_str:     .asciz      "%f"
 prompt_str:     .asciz      "Type a number and press enter: "
-printf_str:     .asciz      "The number entered was: %d\n"
+printf_str:     .asciz      "The number entered was: %f\n"
 exit_str:       .ascii      "Terminating program.\n"
