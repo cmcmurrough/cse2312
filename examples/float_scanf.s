@@ -16,13 +16,11 @@ main:
     BL  _prompt             @ branch to prompt procedure with return
     BL  _scanf              @ branch to scanf procedure with return
     
-	VMOV S0, R0             @ move return value R0 to FPU register S0
-	VCVT.F32.U32 S0, S0     @ convert unsigned bit representation to single float
+    VMOV S0, R0             @ move return value R0 to FPU register S0
+    #VCVT.F32.U32 S0, S0     @ convert unsigned bit representation to single float
 	
-	VCVT.F64.F32 D1, S0     @ covert the result to double precision for printing
+    VCVT.F64.F32 D1, S0     @ covert the result to double precision for printing
     VMOV R1, R2, D1         @ split the double VFP register into two ARM registers
-    BL  _printf_result      @ print the result
-	
     BL  _printf             @ branch to print procedure with return
     B   _exit               @ branch to exit procedure with no return
    
