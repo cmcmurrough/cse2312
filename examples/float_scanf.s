@@ -3,8 +3,9 @@
 * @brief example of obtaining a floating point value using scanf
 *
 * Obtains a floating point value using scanf. The single precision number is
-* stored in memory, moved to R0, where it can then be moved to S0 for operation
-* in the FPU.
+* stored in memory by scanf and then returned in R0. R0 is then moved to S0,
+* where it is converted to double precision in D1. D1 is then split into R1 and
+* R2 for compatability with printf.
 *
 * @author Christopher D. McMurrough
 ******************************************************************************/
@@ -15,10 +16,7 @@
 main:
     BL  _prompt             @ branch to prompt procedure with return
     BL  _scanf              @ branch to scanf procedure with return
-    
     VMOV S0, R0             @ move return value R0 to FPU register S0
-    #VCVT.F32.U32 S0, S0     @ convert unsigned bit representation to single float
-	
     VCVT.F64.F32 D1, S0     @ covert the result to double precision for printing
     VMOV R1, R2, D1         @ split the double VFP register into two ARM registers
     BL  _printf             @ branch to print procedure with return
